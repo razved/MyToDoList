@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid
+        android:color="@color/type_count_circle"/>
+    <size
+        android:width="@dimen/type_count_circle_width"
+        android:height="@dimen/type_count_circle_height"/>
+    <corners
+        android:radius="18dp"/>
+</shape>

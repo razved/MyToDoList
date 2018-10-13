@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="task_name_color">#000000</color>
+    <color name="type_count_color">#FFFFFF</color>
+
+    <!--TYPES COLORS-->
+    <color name="type_background_white">#FFFFFF</color>
+    <color name="type_background_red">#FFCDD2</color>
+    <color name="type_background_pink">#F8BBD0</color>
+    <color name="type_background_blue">#BBDEFB</color>
+    <color name="type_background_green">#C8E6C9</color>
+    <color name="type_background_yellow">#FFF9C4</color>
+    <color name="type_background_orange">#FFE0B2</color>
+    <color name="type_background_brown">#D7CCC8</color>
+    <color name="type_count_circle">#ff9e22</color>
+
+</resources>

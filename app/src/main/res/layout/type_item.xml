@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/type_item_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="10dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="10dp">
+
+    <TextView
+        android:id="@+id/type_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/task_name_color"
+        android:textSize="18sp"
+        android:layout_weight="1"
+        tools:text="Покупки"/>
+    <TextView
+        android:id="@+id/type_number_tasks"
+        android:layout_width="@dimen/type_count_circle_width"
+        android:layout_height="@dimen/type_count_circle_height"
+        android:textSize="24sp"
+        android:background="@drawable/tasks_count"
+        android:textColor="@color/type_count_color"
+        android:gravity="center"
+        tools:text="11"/>
+
+</LinearLayout>

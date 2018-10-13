@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">MyToDoList</string>
+    <string name="error_saving_new_task">Error with insert new Task</string>
+    <string name="error_saving_new_type">Error with saving new Type</string>
+    <string name="insert_dummy_task">Insert Dummy Task</string>
+    <string name="type_name">Name</string>
+    <string name="type_name_hint">Write here name of task type</string>
+    <string name="menu_type_delete">Delete</string>
+    <string name="menu_type_save">Save</string>
+    <string name="wrong_name_error">You need to enter something as Name</string>
+    <string name="adding_type_failed_error">Adding new Type failed</string>
+    <string name="item_saved">Item saved!</string>
+    <string name="type_editing_failed_error">Item editing was failed</string>
+    <string name="count_items_updated">items was updated!</string>
+    <string name="hint_task_name">Buy eggs</string>
+    <string name="tv_task_name">Task Name</string>
+    <string name="tv_description">Description</string>
+    <string name="hint_task_description">I should buy eggs in shop</string>
+    <string name="menu_task_delete">Delete</string>
+    <string name="menu_task_save">Save Task</string>
+    <string name="wrong_task_name_error">Wrong Task name</string>
+    <string name="adding_task_failed_error">Error with adding new task to Database</string>
+    <string name="task_editing_failed_error">Error with editing task</string>
+    <string name="add_task">Add new Task</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="add_type">Add new Type</string>
+    <string name="edit_type">Edit Task Type</string>
+</resources>
