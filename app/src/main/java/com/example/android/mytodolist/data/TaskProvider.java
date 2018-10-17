@@ -244,6 +244,9 @@ public class TaskProvider extends ContentProvider {
         }
         if (rowsDeleted != 0) {
             getContext().getContentResolver().notifyChange(uri, null);
+            // Так как при удалении задачи нам надо так же обновить и список типов (количество)
+            // например количество задач в каждом из типов, то надо дернуть и URI типов
+            getContext().getContentResolver().notifyChange(TaskTypeEntry.CONTENT_URI, null);
         }
 
         return rowsDeleted;
@@ -307,6 +310,10 @@ public class TaskProvider extends ContentProvider {
         // Проверяем есть ли измененные данные и даём об этом знать листенерам
         if (rowsUpdated != 0) {
             getContext().getContentResolver().notifyChange(uri, null);
+            // Так как при обновлении задачи нам надо так же обновить и список типов
+            // (количество, вдруг перенесли в другой Тип эту Задачу)
+            // то надо дернуть и URI типов
+            getContext().getContentResolver().notifyChange(TaskTypeEntry.CONTENT_URI, null);
         }
 
         return rowsUpdated;

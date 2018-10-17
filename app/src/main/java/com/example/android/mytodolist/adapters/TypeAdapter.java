@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,56 +36,9 @@ public class TypeAdapter extends RecyclerView.Adapter<TypeAdapter.ViewHolder> {
     }
 
 
-
     public void setCursor(Cursor cursor) {
         this.cursor = cursor;
         notifyDataSetChanged();
-    }
-
-
-
-    public class ViewHolder  extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener  {
-        @BindView(R.id.type_name) TextView typeName;
-        @BindView(R.id.type_number_tasks) TextView numberTasks;
-        @BindView(R.id.type_item_view) LinearLayout typeItemView;
-
-        private ItemClickListener itemClickListener;
-        int typeId;
-
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(this);
-//            itemView.setOnClickListener(this);
-        }
-
-        // Пишем в данные из курсора во вью
-        public void bindModel(Cursor cursor) {
-            String typeNameString = cursor.getString(cursor.getColumnIndex(TaskTypeEntry.COLUMN_TYPE_NAME));
-            typeId = cursor.getInt(cursor.getColumnIndex(TaskTypeEntry._ID));
-            int tasksCount = getTasksCount(typeId);
-
-            typeName.setText(typeNameString);
-            numberTasks.setText(String.valueOf(tasksCount));
-
-            typeItemView.setBackgroundColor(Utils.getTypeColor(context, typeId));
-        }
-
-        public void setItemClickListener(ItemClickListener itemClickListener) {
-            this.itemClickListener = itemClickListener;
-        }
-
-        @Override
-        public void onClick(View view) {
-            itemClickListener.onClick(view, getAdapterPosition(), false);
-        }
-
-        @Override
-        public boolean onLongClick(View view) {
-            itemClickListener.onClick(view, getAdapterPosition(), true);
-            return true;
-        }
     }
 
     private int getTasksCount(int typeId) {
@@ -132,7 +86,50 @@ public class TypeAdapter extends RecyclerView.Adapter<TypeAdapter.ViewHolder> {
         }
     }
 
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+        @BindView(R.id.type_name)
+        TextView typeName;
+        @BindView(R.id.type_number_tasks)
+        TextView numberTasks;
+        @BindView(R.id.type_item_view)
+        LinearLayout typeItemView;
+        int typeId;
+        private ItemClickListener itemClickListener;
 
 
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+//            itemView.setOnClickListener(this);
+        }
+
+        // Пишем в данные из курсора во вью
+        public void bindModel(Cursor cursor) {
+            String typeNameString = cursor.getString(cursor.getColumnIndex(TaskTypeEntry.COLUMN_TYPE_NAME));
+            typeId = cursor.getInt(cursor.getColumnIndex(TaskTypeEntry._ID));
+            int tasksCount = getTasksCount(typeId);
+
+            typeName.setText(typeNameString);
+            numberTasks.setText(String.valueOf(tasksCount));
+
+            typeItemView.setBackgroundColor(Utils.getTypeColor(context, typeId));
+        }
+
+        public void setItemClickListener(ItemClickListener itemClickListener) {
+            this.itemClickListener = itemClickListener;
+        }
+
+        @Override
+        public void onClick(View view) {
+            itemClickListener.onClick(view, getAdapterPosition(), false);
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            itemClickListener.onClick(view, getAdapterPosition(), true);
+            return true;
+        }
+    }
 
 }

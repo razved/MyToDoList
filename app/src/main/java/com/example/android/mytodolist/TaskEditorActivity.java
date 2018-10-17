@@ -91,13 +91,11 @@ public class TaskEditorActivity extends AppCompatActivity implements LoaderManag
         } else {
             setTitle(R.string.edit_task);
             //todo  раскоментировать следующую строку когда сделаю свайп с опцией редактирования
- //            loaderTask = getSupportLoaderManager().initLoader(TASK_LOADER, null, this);
+            Log.i(LOG_TAG, "onCreate - Data URI: " + taskItemUri);
+            loaderTask = getSupportLoaderManager().initLoader(TASK_LOADER, null, this);
         }
 
-
-
-        loaderType = getSupportLoaderManager().initLoader(TYPE_LOADER, null, this);
-
+       loaderType = getSupportLoaderManager().initLoader(TYPE_LOADER, null, this);
     }
 
     private void setupSpinner() {
@@ -220,15 +218,20 @@ public class TaskEditorActivity extends AppCompatActivity implements LoaderManag
 
         }
         if (loader.getId() == TASK_LOADER) {
-            // заполняем все вью данными из курсора
-            String currentTaskName = cursor.getString(cursor.getColumnIndex(TaskEntry.COLUMN_TASK_NAME));
-            String currentTaskDesc = cursor.getString(cursor.getColumnIndex(TaskEntry.COLUMN_TASK_DESC));
-            int currentTaskType = cursor.getInt(cursor.getColumnIndex(TaskEntry.COLUMN_TASK_TYPE));
+            // Если открыли редактирование уже существующего таска, то
+            if (cursor.moveToFirst()) {
+                // заполняем все вью данными из курсора
+                int indexTaskName = cursor.getColumnIndex(TaskEntry.COLUMN_TASK_NAME);
+                Log.i(LOG_TAG, "onLoadFinished - indexTaskName: " + indexTaskName);
+                String currentTaskName = cursor.getString(indexTaskName);
+                Log.i(LOG_TAG, "onLoadFinished - currentTaskName: " + currentTaskName);
+                String currentTaskDesc = cursor.getString(cursor.getColumnIndex(TaskEntry.COLUMN_TASK_DESC));
+                int currentTaskType = cursor.getInt(cursor.getColumnIndex(TaskEntry.COLUMN_TASK_TYPE));
 
-            etTaskName.setText(currentTaskName);
-            etDescription.setText(currentTaskDesc);
-            spinnerType.setSelection(currentTaskType - 1);
-
+                etTaskName.setText(currentTaskName);
+                etDescription.setText(currentTaskDesc);
+                spinnerType.setSelection(currentTaskType - 1);
+            }
         }
 
     }
